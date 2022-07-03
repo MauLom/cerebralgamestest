@@ -32,11 +32,9 @@ const Main = () => {
     }
     const rollPrizes = (dataToRoll) => {
         const arrRolls = []
-        console.log("costs", dataToRoll.cost)
         const newBalance = balance - parseInt(dataToRoll.cost)
-        console.log("the new balance: ", newBalance)
         if (balance > 0) {
-            const request = { operation: "rollPrizes", cost: dataToRoll.cost, bal: newBalance }
+            const request = {operation:"rollPrizes", bal: newBalance}
             ws.send(JSON.stringify(request));
             dataToRoll.details.forEach(eachDetail => {
                 const transformedProb = eachDetail.probability * 10
@@ -72,8 +70,6 @@ const Main = () => {
 
                 case "loadPrizes":
                     setPrizesSets(response.dataPrizes['prize-sets'])
-                    console.log("the charts data:", response.dataPrizes['prize-sets'])
-                    // setPrizesSets(JSON.parse(response.dataPrizes)['prize-sets'])
                     break;
                 case "rollPrizes":
                     setBalance(response.dataUser.balance)

@@ -5,5 +5,5 @@ COPY ["package.json", "package-lock.json", "./"]
 RUN ls
 RUN npm install --production
 COPY . .
-EXPOSE 5000
-CMD ["node", "backend.js"]
+EXPOSE 8000
+CMD ["node", "server.js"]

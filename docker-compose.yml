@@ -1,19 +1,17 @@
-version: '1'
+version: '3'
 services:
   backend:
-    env_file:
-        "./server/server.env"
     build:
       context: ./server
       dockerfile: ./Dockerfile
     image: "mauriciolom/cerebral-game-test-server"
     ports:
-      - "5000:5000"
+      - "8000:8000"
   frontend:
     build:
-      context: ./client
+      context: ./web
       dockerfile: ./Dockerfile
-    image: "mauriciolom/cerebral-game-test-client"
+    image: "mauriciolom/cerebral-game-test-web"
     ports:
       - "3000:3000"
     links:
